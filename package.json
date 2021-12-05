@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@pixi/graphics-extras": "^6.2.0",
     "pixi.js": "^6.2.0"
   }
 }
