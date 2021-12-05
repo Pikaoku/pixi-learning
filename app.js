@@ -88,8 +88,41 @@ myText.style.wordWrapping = true;
 myText.style.wordWrapWidth = 100;
 myText.align = "center";
 
-app.ticker.add((delta) => loop(delta));
+// app.ticker.add((delta) => loop(delta));
 
-function loop(delta) {
-  rectangle.rotation += 0.01;
-}
+// function loop(delta) {
+//   rectangle.rotation += 0.01;
+// }
+
+rectangle.interactive = true;
+rectangle.buttonMode = true;
+rectangle.on("pointerdown", () => {
+  rectangle.alpha -= 0.2;
+  if (rectangle.alpha <= 0) {
+    rectangle.alpha = 1;
+  }
+});
+
+const sprite = PIXI.Sprite.from("./images/dark_magician.png");
+sprite.scale.set(0.2);
+sprite.anchor.set(0.5);
+sprite.position.set(app.renderer.width / 2, app.renderer.height / 2);
+
+app.stage.addChild(sprite);
+
+// on keydown, if the key is the right arrow, move the sprite 10px to the right
+// on keydown, if the key is the left arrow, move the sprite 10px to the left
+// on keydown, if the key is the up arrow, move the sprite 10px up
+// on keydown, if the key is the down arrow, move the sprite 10px down
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") {
+    sprite.x += 10;
+  } else if (event.key === "ArrowLeft") {
+    sprite.x -= 10;
+  } else if (event.key === "ArrowUp") {
+    sprite.y -= 10;
+  } else if (event.key === "ArrowDown") {
+    sprite.y += 10;
+  }
+});
